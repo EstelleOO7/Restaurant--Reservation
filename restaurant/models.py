@@ -6,7 +6,7 @@ class Booking(models.Model):
    last_name = models.CharField(max_length=200)
    guest_number = models.IntegerField(validators=[MinValueValidator(2), MaxValueValidator(20)])
    special_requests_comments = models.CharField(max_length=1000)
-   date = models.DateTimeField()
+   # date = models.DateTimeField()
    phone_number = models.CharField(max_length=15)
    email = models.EmailField(max_length=254)
    reservation_active = models.BooleanField(default=True)  
