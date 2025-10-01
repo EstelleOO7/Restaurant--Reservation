@@ -1,0 +1,45 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+<section>
+  <article>
+    <h1>About Us</h1>
+    <!--Begin row-->
+    <div class="row">
+      <!--Begin col-->
+      <div class="column">
+        <p>At Tribes and Taste, food is more than what's on the plate; it's a story, a memory, and a bridge between cultures.</p>
+        <p>We are two sisters, born and raised in Nigeria, now proud to call Quebec, Canada our home. Growing up, the heart of our household was the kitchen, filled with the rich aromas of Nigerian spices, family recipes passed down through generations, and the joy of sharing meals with loved ones. Food taught us early on that flavors carry history, identity, and tradition.</p>
+        <p>Our journey took us far from home, but it only deepened our love for cooking. Studying in Italy, we immersed ourselves in the art of Italian cuisine — learning not only how to craft pasta and perfect sauces, but also the culture of slow dining, where every bite is savored and every table is a place of connection. Travels to Greece and other countries added new chapters to our story, introducing us to fresh, coastal flavors and reminding us of how food unites people across languages and borders.</p>
+        <p>Tribes and Taste was born out of this journey — a dream to weave together the dishes we grew up with and the flavors we discovered abroad. Here, you'll find a menu that is both rooted and adventurous: a fusion of African heritage, Mediterranean freshness, and global inspiration.</p>
+        <p>But more than just a restaurant, Tribes and Taste is our way of building community. We want it to feel like a place where every guest belongs, where cultures meet at the table, and where food reminds us of the beauty of diversity.</p>
+        <p>From sisters who started this journey with a simple love of cooking, welcome to our table. Taste the world with us, one dish at a time.</p>
+
+          <article>
+            <h3>Opening Hours</h3>
+            <ul>
+              <li>Mon - Fri: 2pm - 10pm</li>
+              <li>Sat: 2pm - 11pm</li>
+              <li>Sun: 2pm - 9pm</li>
+            </ul>
+          </article>
+    
+      </div>
+      <!--End col-->
+
+      <!--Begin col-->
+      <div class="column">
+        <figure class="figure">
+          <img
+            src="{% static 'img/owners.jpg' %}"
+            alt="Dami and Estelle"
+          />
+          <figcaption class="figure-caption">
+            Tribes and Taste owners.
+          </figcaption>
+        </figure>
+      </div>
+      <!--End col-->
+    </div>
+    <!--End row-->
+  </article>
+</section>
+{% endblock %}

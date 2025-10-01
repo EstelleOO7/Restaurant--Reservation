@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="menu-header">
+  <h1>Menu</h1>
+  <div class="search-container">
+    <form method="get" action="" class="search-form">
+          <input type="text" name="q" placeholder="Search menu items..." value="{{ request.GET.q }}" class="search-input">
+          <button type="submit" class="search-btn">Search</button>
+        </form>
+     </div>
+</div>
+
+
+<div class="menu-grid">
+  {% for item in menu_data %}
+  <div class="menu-card">
+    <img src="{% static 'img/menu_items/' %}{{ item.get_image_filename }}" alt="{{ item.name }}" class="menu-img">
+          
+      <div class="menu-info">
+        <h3>{{ item.name }}</h3>
+        <p>{{ item.description }}</p>
+        <span class="price">${{ item.price }}.00</span>
+      </div>
+        </div>
+      {% empty %}
+        <p>No menu items found.</p>
+      {% endfor %}
+  </div>
+</div>
+{% endblock %}

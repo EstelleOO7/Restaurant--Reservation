@@ -1,0 +1,95 @@
+{% extends 'base.html' %} 
+{% load static %}
+
+{% block content %}
+<section>
+    <article id="hero">
+      <h1 class="heading_shadow">SPECIAL OFFER</h1>
+      <p>
+        30% Off This Weekend 
+      </p>
+      <a href="{% url 'book' %}" class="cta"> Book now </a>
+    </article>
+  </section>
+  <section class="homepage-cards">
+    <article class="article-home-up">
+      <h2 class="header-home">Our New Menu</h2>
+      <img src="{% static 'img/grill.jpg' %}">
+      <p>
+        Our menu consists of 12-15 seasonal items based on Italian, Greek, and Turkish culture.
+      </p>
+      <p>
+        <a href="{% url 'menu' %}">See our new menu</a>
+      </p>
+    </article>
+    <article class="article-home-up">
+      <h2 class="header-home">Book a table</h2>
+      <img src="{% static 'img/Grilled-fish-B.jpg' %}">
+      <p>
+        Reserve your table for an Italian, Greek, and Turkish dining experience.
+      </p>
+      <p>
+        <a href="{% url 'book' %}">Book your table now</a>
+      </p>
+    </article>
+    <article class="article-home-up">
+      <h2 class="header-home">Opening Hours</h2>
+      <img src="{% static 'img/grill_B.jpg' %}">
+      <p>
+        The Tribes and Taste Restaurant is open 7 days a week, except for public holidays. 
+      </p>
+      <a href="{% url 'about' %}" style="font-size: 1.25rem;">Opening Hours</a>
+    </article>
+  </section>
+  <section class="about-us-section">
+    <article class="about-us-home">
+      <h2 class="about">About</h2>
+        <p>
+          Based in Quebec, Canada, Tribes and Taste is a family-owned
+          restaurant, focused on traditional recipes served with a
+          modern twist.
+        </p>
+        <p>
+          The chefs draw inspiration from Italian, Nigerian, Greek, and Turkish culture
+          and have a menu of 12-15 items that they rotate seasonally.
+        </p>
+
+        <p>
+          The restaurant has a rustic and relaxed atmosphere with moderate
+          prices, making it a popular place for a meal any time of the day.
+        </p>
+
+        <p>
+          Tribes and Taste is a family-owned restaurant, Damilola and Estelle, who
+          moved to Canada to pursue their shared dream of owning a
+          restaurant.
+        </p>
+
+        <p>
+          To craft the menu, they rely on family recipes and their experience
+          as chefs in Italy and other countries.
+        </p>
+
+        <p>
+          Damilola does all the marketing for the restaurant and led the effort to
+          expand the menu beyond classic Italian to incorporate additional
+          cuisines from the Mediterranean region.
+        </p>
+    
+      <img src="{% static 'img/restaurant1.jpg' %}" style="width: 250px; height: auto; border-radius: 8px; margin-top: 1rem; margin-bottom: 1rem;">
+      <img src="{% static 'img/restaurant_food_B.jpg' %}" style="width: 250px; height: auto; border-radius: 8px; margin-top: 1rem; margin-bottom: 1rem;" alt="">
+      <article>
+        <h3>Opening Hours</h3>
+        <ul>
+          <li>Mon - Fri: 2pm - 10pm</li>
+          <li>Sat: 2pm - 11pm</li>
+          <li>Sun: 2pm - 9pm</li>
+        </ul>
+      </article>
+      <p>
+        <a href="{% url 'about' %}">Learn more about us</a>
+      </p>
+    </article>
+  </section>
+  <section
+{% endblock %}

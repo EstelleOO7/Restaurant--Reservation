@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<section>
+  <article>
+    <div class="reservation">
+      <h1>Make a reservation</h1>
+
+      {% if messages %}
+          <div style="padding: 15px; background-color: #d4edda; color: #155724; margin: 20px 0; border-radius: 5px;">
+            {% for message in messages %}
+              <p>{{ message }}</p>
+            {% endfor %}
+          </div>
+      {% endif %}
+    </div>
+
+
+    <div class="reservation-container">
+      <div class="row">
+        <div class="form-section">
+          <form action="" method="post">
+            {% csrf_token %}
+            {{form.as_p}}
+            <input type="submit" id="button" class="submitbook">
+          </form>
+        </div>
+      </div>
+      <!--End col-->
+
+      <!-- Begin col-->
+      <div class="column">
+        <div class="image-section">
+          <img
+            src="{% static 'img/restaurant2.jpg' %}" alt="Table with food"/>
+        </div>
+      </div>
+      <!--End col -->
+    </div>
+    <!--End row-->
+
+
+
+
+  </article>
+</section>
+{% endblock %}
