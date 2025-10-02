@@ -7,8 +7,9 @@ from django.utils import timezone
 from django.shortcuts import get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+# from .forms import AssignForm
 
-# from .models import MenuItem
+
 
 
 # Create your views here.
@@ -42,8 +43,6 @@ def menu(request):
     return render(request, "menu.html", {"menu_data": menu_data})
 
 
-
-
 def menu(request):
     menu_data = Menu.objects.all()
     context = {'menu_data': menu_data}
@@ -58,6 +57,36 @@ def display_menu_item(request, pk=None): #
         menu_item = ""
 
     return render(request, 'menu_item.html', {'menu_item': menu_item}) 
+    
+
+def assign_reservation(request, pk):
+    booking = get_object_or_404(Booking, pk=pk)
+
+    if request.method == "POST":
+        new_date = request.POST.get("assigned_date")
+        if new_date:
+            booking.assigned_date = new_date
+            booking.save()
+            messages.success(request, f"Reservation updated for {booking.first_name} {booking.last_name}")
+    return redirect('reservation_dashboard')
+
+
+# def assign_reservation(request, pk):
+#     booking = get_object_or_404(Booking, pk=pk)
+
+#     if request.method == 'POST':
+#         form = AssignForm(request.POST)
+#         if form.is_valid():
+#             booking.assigned_date = form.cleaned_data['assigned_date']
+#             booking.save()
+#             return redirect('reservation_dashboard')  # back to the dashboard
+#     else:
+#         form = AssignForm(initial={'assigned_date': booking.assigned_date})
+
+#     return render(request, 'assign_reservation.html', {
+#         'form': form,
+#         'booking': booking
+#     })
     
     
 

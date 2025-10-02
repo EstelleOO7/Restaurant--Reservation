@@ -1,54 +1,72 @@
 {% extends "base.html" %}
+
 {% block content %}
 
 {% if messages %}
-    <div style="padding: 15px; background-color: #d4edda; color: #155724; margin: 20px 0; border-radius: 5px;">
-        {% for message in messages %}
-            {{ message }}
-        {% endfor %}
-    </div>
+<div style="
+    padding: 15px;
+    background-color: #d4edda;
+    color: #155724;
+    margin: 20px 0;
+    border-radius: 5px;
+">
+  {% for message in messages %}
+    {{ message }}
+  {% endfor %}
+</div>
 {% endif %}
 
+<h1 style="margin-top: 100px;">Reservation Dashboard</h1>
 
-<h1>Reservation Dashboard</h1>
-
-<table border="1" cellpadding="8">
+<div class="reservation-dashboard">
+  <table border="1" cellpadding="8">
     <thead>
-        <tr>
-            <th>Guest</th>
-            <th>Phone</th>
-            <th>Email</th>
-            <th>Guests</th>
-            <th>Requests</th>
-            <th>Assigned Date</th>
-            <th>Actions</th>
-        </tr>
+      <tr>
+        <th>Guest</th>
+        <th>Phone</th>
+        <th>Email</th>
+        <th>Guests</th>
+        <th>Requests</th>
+        <th>Assigned Date</th>
+        <th>Status</th>
+        <th>Actions</th>
+      </tr>
     </thead>
     <tbody>
-        {% for booking in bookings %}
-        <tr>
-            <td>{{ booking.first_name }} {{ booking.last_name }}</td>
-            <td>{{ booking.phone_number }}</td>
-            <td>{{ booking.email }}</td>
-            <td>{{ booking.guest_number }}</td>
-            <td>{{ booking.special_requests_comments }}</td>
-            <td>{{ booking.assigned_date|date:"d/m/y" }}</td>
-            <td>
-                {% if booking.reservation_active %}
-                    Active
-                {% else %}
-                    Inactive
-                {% endif %}
-            </td>
-            <td>
-                <a href="{% url 'approve_booking' booking.id %}">Approve</a> |
-                <a href="{% url 'cancel_booking' booking.id %}">Cancel</a> |
-                <a href="{% url 'assign_booking' booking.id %}">Assign</a>
-            </td>
-        </tr>
-        {% empty %}
-        <tr><td colspan="8">No reservations yet.</td></tr>
-        {% endfor %}
+      {% for booking in bookings %}
+      <tr>
+        <td>{{ booking.first_name }} {{ booking.last_name }}</td>
+        <td>{{ booking.phone_number }}</td>
+        <td>{{ booking.email }}</td>
+        <td>{{ booking.guest_number }}</td>
+        <td>{{ booking.special_requests_comments }}</td>
+        <td>{{ booking.assigned_date|date:"d/m/y" }}</td>
+        <td>
+          {% if booking.reservation_active %}
+            Active
+          {% else %}
+            Inactive
+          {% endif %}
+        </td>
+        <td>
+          <a href="{% url 'approve_booking' booking.pk %}">Approve</a> |
+          <a href="{% url 'cancel_booking' booking.pk %}">Cancel</a> |
+          <form action="{% url 'assign_reservation' booking.pk %}" 
+            method="post" 
+            style="display:inline;">
+            <button type="submit" style="background:none; border:none; font-size: medium; color:rgb(219, 91, 31); text-decoration:none; cursor:pointer; padding:0;">Assign</button> 
+            {% csrf_token %}
+            <input type="datetime-local" name="assigned_date" required>
+          </form>
+        </td>
+      </tr>
+      {% empty %}
+      <tr>
+        <td colspan="8">No reservations yet.</td>
+      </tr>
+      {% endfor %}
     </tbody>
-</table>
+  </table>
+</div>
+
 {% endblock %}
